@@ -4,11 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements RecycleViewInterface{
     double[] atomicWeight = {1.0079, 4.0026, 6.938, 9.01218, 10.806, 12.0096, 14.0064, 15.999,
             18.9984, 20.1797, 22.9898, 24.304, 26.9815, 28.084, 30.9738, 32.059, 35.446, 39.792,
             39.0983, 40.0784, 44.9559, 47.8671, 50.9415, 51.9962, 54.938, 55.8452, 58.9332, 58.6934,
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_main);
         setContentView(R.layout.activity_main);
 
         RecyclerView recyclerView = findViewById(R.id.mRecyclerView);
@@ -28,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setChemicalElementsModels();
 
         CE_RecyclerViewAdapter adapter = new CE_RecyclerViewAdapter(this,
-                chemicalElementsModels);
+                chemicalElementsModels, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -37,10 +39,24 @@ public class MainActivity extends AppCompatActivity {
         String[] elementNamesRU = getResources().getStringArray(R.array.chemical_elements_full_name_RU);
         String[] elementNamesEN = getResources().getStringArray(R.array.chemical_elements_full_name_EN);
         String[] elementSymbols = getResources().getStringArray(R.array.chemical_elements_symbols);
+        String[] elementDesc = getResources().getStringArray(R.array.descriptions);
 
         for (int i = 0; i < elementNamesEN.length; i++) {
             chemicalElementsModels.add(new ChemicalElementsModel(elementNamesRU[i],
-                    elementNamesEN[i], elementSymbols[i], atomicWeight[i]));
+                    elementNamesEN[i], elementSymbols[i], atomicWeight[i], elementDesc[i]));
         }
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+
+        intent.putExtra("SYM", chemicalElementsModels.get(position).getSmallName());
+        intent.putExtra("RU_NAME", chemicalElementsModels.get(position).getElementNameRU());
+        intent.putExtra("EN_NAME", chemicalElementsModels.get(position).getElementNameEN());
+        intent.putExtra("WEIGHT", chemicalElementsModels.get(position).getWeight());
+        intent.putExtra("DESCRIPTION", chemicalElementsModels.get(position).getDescription());
+
+        startActivity(intent);
     }
 }

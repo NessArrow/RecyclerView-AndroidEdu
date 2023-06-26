@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bluegrey"
+    tools:context=".MainActivity2">
+    
+    <TextView
+        android:includeFontPadding="false"
+        android:id="@+id/CE_symbol"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="He"
+        android:fontFamily="@font/sf_heavy"
+        android:textColor="@color/white"
+        android:textSize="100sp"
+        android:gravity="center"
+        android:layout_marginTop="100dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+    <TextView
+        android:id="@+id/CE_nameEN"
+
+        android:fontFamily="@font/sf_ultra_light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Helium"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        app:layout_constraintTop_toBottomOf="@id/CE_symbol"/>
+
+    <TextView
+        android:includeFontPadding="false"
+        android:id="@+id/CE_nameRU"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Гелий"
+        android:fontFamily="@font/sf_ultra_light"
+        android:gravity="center"
+        android:textSize="30sp"
+        app:layout_constraintTop_toBottomOf="@id/CE_nameEN"/>
+
+    <TextView
+        android:id="@+id/CE_weight"
+        android:fontFamily="@font/sf_ultra_light"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="4.0026"
+        android:gravity="center"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@id/CE_symbol"/>
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:fontFamily="@font/sf_medium"
+        android:text="\t\t\tНазвание произошло от греч. ἥλιος — «Солнце» (см. Гелиос). В названии элемента было использовано характерное для металлов окончание «-ий» (на лат. «-um» — «Helium»), так как Локьер предполагал, что открытый им элемент является металлом. По аналогии с другими благородными газами логично было бы дать ему имя «гелион» («Helion»). В современной науке название «гелион» закрепилось за ядром лёгкого изотопа гелия — гелия-3."
+        android:textSize="17sp"
+        android:justificationMode="inter_word"
+        android:layout_margin="20dp"
+        app:layout_constraintTop_toBottomOf="@id/CE_nameRU"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

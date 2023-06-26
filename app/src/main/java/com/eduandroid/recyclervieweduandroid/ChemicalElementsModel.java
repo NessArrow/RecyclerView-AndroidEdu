@@ -4,13 +4,20 @@ public class ChemicalElementsModel {
     String elementNameRU;
     String elementNameEN;
     String smallName;
+
+    public String getDescription() {
+        return description;
+    }
+
+    String description;
     double weight;
 
-    public ChemicalElementsModel(String elementNameRU, String elementNameEN, String smallName, double weight) {
+    public ChemicalElementsModel(String elementNameRU, String elementNameEN, String smallName, double weight, String desc) {
         this.elementNameRU = elementNameRU;
         this.elementNameEN = elementNameEN;
         this.smallName = smallName;
         this.weight = weight;
+        this.description = desc;
     }
 
     public String getElementNameRU() {
