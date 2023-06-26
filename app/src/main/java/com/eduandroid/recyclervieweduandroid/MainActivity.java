@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements RecycleViewInterf
             114.818, 118.711};
 
     ArrayList<ChemicalElementsModel> chemicalElementsModels = new ArrayList<>();
+    CE_RecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements RecycleViewInterf
 
         setChemicalElementsModels();
 
-        CE_RecyclerViewAdapter adapter = new CE_RecyclerViewAdapter(this,
+        adapter = new CE_RecyclerViewAdapter(this,
                 chemicalElementsModels, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -58,5 +59,11 @@ public class MainActivity extends AppCompatActivity implements RecycleViewInterf
         intent.putExtra("DESCRIPTION", chemicalElementsModels.get(position).getDescription());
 
         startActivity(intent);
+    }
+
+    @Override
+    public void onItemLingClick(int position) {
+        chemicalElementsModels.remove(position);
+        adapter.notifyItemRemoved(position);
     }
 }

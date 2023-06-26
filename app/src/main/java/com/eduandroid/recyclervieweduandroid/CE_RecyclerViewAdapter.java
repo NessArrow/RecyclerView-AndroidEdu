@@ -69,6 +69,19 @@ public class CE_RecyclerViewAdapter extends RecyclerView.Adapter<CE_RecyclerView
                     }
                 }
             });
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View view) {
+                    if (recycleViewInterface != null) {
+                        int position = getAdapterPosition();
+
+                        if (position != RecyclerView.NO_POSITION) {
+                            recycleViewInterface.onItemLingClick(position);
+                        }
+                    }
+                    return true;
+                }
+            });
         }
     }
 }
